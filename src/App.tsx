@@ -7,12 +7,14 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
+    // 1. Initialize the Adobe View object (No divId needed for Lightbox)
     // eslint-disable-next-line
     // @ts-ignore
-    const adobeDCView = new AdobeDC.View({
+    const adobeDCView = new window.AdobeDC.View({
       clientId: "957fbb8a20a8459d8145bacc05d9b131",
     });
-    console.log({ adobeDCView });
+
+    // 2. Call previewFile with LIGHT_BOX mode
     adobeDCView.previewFile(
       {
         content: {
@@ -20,9 +22,11 @@ function App() {
             url: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:ed77da84-7fc7-4417-9d27-2dfef9c4d48e",
           },
         },
-        metaData: { fileName: "Bodea Brochure.pdf" },
+        metaData: { fileName: "o.pdf" },
       },
-      { embedMode: "LIGHT_BOX" }
+      {
+        embedMode: "LIGHT_BOX",
+      }
     );
   };
 
@@ -49,7 +53,6 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
       <button onClick={handleClick}>open pdf preview</button>
-      <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
     </>
   );
 }
