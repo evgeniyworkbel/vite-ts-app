@@ -48,10 +48,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <button onClick={handleClick}>
-        open pdf preview
-        <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
-      </button>
+      <button onClick={handleClick}>open pdf preview</button>
+      <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
     </>
   );
 }
