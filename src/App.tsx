@@ -7,25 +7,23 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handleClick = () => {
-    document.addEventListener("adobe_dc_view_sdk.ready", function () {
-      // eslint-disable-next-line
-      // @ts-ignore
-      const adobeDCView = new AdobeDC.View({
-        clientId: "957fbb8a20a8459d8145bacc05d9b131",
-      });
-      console.log({ adobeDCView });
-      adobeDCView.previewFile(
-        {
-          content: {
-            location: {
-              url: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:ed77da84-7fc7-4417-9d27-2dfef9c4d48e",
-            },
-          },
-          metaData: { fileName: "Bodea Brochure.pdf" },
-        },
-        { embedMode: "LIGHT_BOX" }
-      );
+    // eslint-disable-next-line
+    // @ts-ignore
+    const adobeDCView = new AdobeDC.View({
+      clientId: "957fbb8a20a8459d8145bacc05d9b131",
     });
+    console.log({ adobeDCView });
+    adobeDCView.previewFile(
+      {
+        content: {
+          location: {
+            url: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:ed77da84-7fc7-4417-9d27-2dfef9c4d48e",
+          },
+        },
+        metaData: { fileName: "Bodea Brochure.pdf" },
+      },
+      { embedMode: "LIGHT_BOX" }
+    );
   };
 
   return (
