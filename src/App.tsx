@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
+  const handleClick = () => {
     document.addEventListener("adobe_dc_view_sdk.ready", function () {
       // eslint-disable-next-line
       // @ts-ignore
@@ -26,7 +26,7 @@ function App() {
         { embedMode: "LIGHT_BOX" }
       );
     });
-  }, []);
+  };
 
   return (
     <>
@@ -50,7 +50,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <button>
+      <button onClick={handleClick}>
         open pdf preview
         <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
       </button>
