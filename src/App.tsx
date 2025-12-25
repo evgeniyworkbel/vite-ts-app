@@ -13,6 +13,7 @@ function App() {
       const adobeDCView = new AdobeDC.View({
         clientId: "957fbb8a20a8459d8145bacc05d9b131",
       });
+      console.log({ adobeDCView });
       adobeDCView.previewFile(
         {
           content: {
