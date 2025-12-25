@@ -1,10 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.addEventListener("adobe_dc_view_sdk.ready", function () {
+      // eslint-disable-next-line
+      // @ts-ignore
+      const adobeDCView = new AdobeDC.View({
+        clientId: "957fbb8a20a8459d8145bacc05d9b131",
+      });
+      adobeDCView.previewFile(
+        {
+          content: {
+            location: {
+              url: "https://acrobat.adobe.com/id/urn:aaid:sc:EU:ed77da84-7fc7-4417-9d27-2dfef9c4d48e",
+            },
+          },
+          metaData: { fileName: "Bodea Brochure.pdf" },
+        },
+        { embedMode: "LIGHT_BOX" }
+      );
+    });
+  }, []);
 
   return (
     <>
@@ -28,8 +49,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <button>
+        open pdf preview
+        <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+      </button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
